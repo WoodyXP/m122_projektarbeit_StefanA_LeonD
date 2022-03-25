@@ -24,10 +24,13 @@ Beide Skripte können mit einem -d aufgerufen werden, dieser wird zusätztliche 
 
 
 #### Script 1: Git clone update repos
+Für das erste Skript muss man 2 Parameter angeben.
+1. BASEDIR, das Directory wo die Repos geclont werden sollen.
+2. REPO_INPUT_FILE, das Inputfile mit den GIT Urls und dem Zieldirectory/Namen vom Folder wo das Repo geclont wird.
 
 Ohne zusätztliche Logs
 
-        ./gitrepoupdater.py
+        ./gitrepoupdater.py BASDIR REPO_INPUT_FILE
 
 ### Ablauf der Automation
 
