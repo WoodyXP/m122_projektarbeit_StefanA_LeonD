@@ -32,14 +32,32 @@ Ohne zusätztliche Logs
 
         ./gitrepoupdater.py BASDIR REPO_INPUT_FILE
 
+Mit zusätliche Logs
+
+        ./gitrepoupdaer.py -d BASDIR REPO_INPUT_FILE
+
+Das Flag "-d" dient dazu dem Skript zu sagen, dass er alle Logs ausgeben soll.
+
 ### Ablauf der Automation
 
 TODO: Hier kommt ihr UML-Activity Diagramm
+
+#### Script 1: Git clone update repos
+
+![image](img/script1_uml.png)
 
 ### Konfigurationsdateien
 
 TODO: Definieren sie welche Parameter in welchen Konfigurationsdateien gespeichert werden.
 
+#### Script 1: Git clone update repos
+
+Für das erste Skript werden keine Configfiles gebraucht.
+
 ## Abgrenzungen zum Lösungsdesign
 
 TODO: Nachdem das Programm verwirklicht wurde hier die unterschiede von der Implemenatino zum Lösungsdesign beschreiben (was wurde anders gemacht, was wurde nicht gemacht, was wurde zusaetzlich gemacht)
+
+#### Script 1: Git clone update repos
+
+Die Aufgabenstellung des Skriptes 1 ist sehr simple und alle Kriterien sollte leicht zum implementieren sein.
