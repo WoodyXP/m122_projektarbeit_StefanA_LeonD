@@ -3,7 +3,7 @@ import os
 
 
 def dir_is_repo(path):
-    print("check if if path is repo: " + path)
+    print("Check if path is repo: " + path)
     try:
         _ = git.Repo(path).git_dir
         return True
