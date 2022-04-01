@@ -30,11 +30,11 @@ Für das erste Skript muss man 2 Parameter angeben.
 
 Ohne zusätztliche Logs
 
-        ./gitrepoupdater.py BASDIR REPO_INPUT_FILE
+        ./gitrepoupdater.py BASEDIR REPO_INPUT_FILE
 
 Mit zusätliche Logs
 
-        ./gitrepoupdaer.py -d BASDIR REPO_INPUT_FILE
+        ./gitrepoupdaer.py -d BASEDIR REPO_INPUT_FILE
 
 Das Flag "-d" dient dazu dem Skript zu sagen, dass er alle Logs ausgeben soll.
 
