@@ -38,6 +38,21 @@ Mit zusätliche Logs
 
 Das Flag "-d" dient dazu dem Skript zu sagen, dass er alle Logs ausgeben soll.
 
+#### Script 2: Git exract commits
+Auch für das zweite Skript muss man nur 2 Parameter mitgeben.
+1. BASEDIR, das Directory wo die Repos sich befinden.
+2. COMMITOUTPUTFILE, der Name des Outputfiles
+
+Ohne zusätztliche Logs
+
+        ./gitextractcommits.py BASEDIR COMMITOUTPUTFILE
+
+Mit zusätliche Logs
+
+        ./gitextractcommits.py -d BASEDIR COMMITOUTPUTFILE
+Wie beim Skript 1 macht das Flag "-d" logs auszugeben
+
+
 ### Ablauf der Automation
 
 TODO: Hier kommt ihr UML-Activity Diagramm
@@ -45,6 +60,11 @@ TODO: Hier kommt ihr UML-Activity Diagramm
 #### Script 1: Git clone update repos
 
 ![image](img/script1_uml.png)
+
+#### Script 2: Git exract commits
+
+![image](img/script2_uml.png)
+
 
 ### Konfigurationsdateien
 
@@ -54,6 +74,10 @@ TODO: Definieren sie welche Parameter in welchen Konfigurationsdateien gespeiche
 
 Für das erste Skript werden keine Configfiles gebraucht.
 
+#### Script 2: Git exract commits
+
+Auch für das zweite Skript werden wir kein Configfile brauchen.
+
 ## Abgrenzungen zum Lösungsdesign
 
 TODO: Nachdem das Programm verwirklicht wurde hier die unterschiede von der Implemenatino zum Lösungsdesign beschreiben (was wurde anders gemacht, was wurde nicht gemacht, was wurde zusaetzlich gemacht)
@@ -61,3 +85,7 @@ TODO: Nachdem das Programm verwirklicht wurde hier die unterschiede von der Impl
 #### Script 1: Git clone update repos
 
 Die Aufgabenstellung des Skriptes 1 ist sehr simple und alle Kriterien sollte leicht zum implementieren sein.
+
+#### Script 2: Git exract commits
+
+Alles was in der Aufgavenstellung des Skriptes 2 steht, kann auch ohne grössere Probleme implementiert werden.
