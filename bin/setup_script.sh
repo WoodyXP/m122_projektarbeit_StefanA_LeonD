@@ -6,3 +6,7 @@ sudo apt install python3
 sudo apt install python3-pip
 echo "y"
 
+chmod 755 gitExtractCommits.py
+chmod 755 gitRepoUpdater.py
+chmod 755 gitRepoUpdaterFunctions.py
+chmod 755 gitExtractCommitsFunctions.py
