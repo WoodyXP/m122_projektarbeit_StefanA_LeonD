@@ -1,5 +1,6 @@
 import git
 import os
+import validators
 
 
 def dir_is_repo(path):
@@ -8,18 +9,33 @@ def dir_is_repo(path):
         _ = git.Repo(path).git_dir
         return True
     except (git.exc.InvalidGitRepositoryError, git.exc.NoSuchPathError):
+        ## TODO: Logging
         return False
 
 
 def repo_matches_remote(repo, remote_url):
+    ## TODO: Logging
     return repo.remotes.origin.url == remote_url
 
 
 def delete_repo(path):
+    ## TODO: Logging
     os.remove(path)
 
 
 def clone_repo(path, remote_url):
     print("cloning repo: " + remote_url + "to path: " + path)
     os.mkdir(path)
+    ## TODO: Logging
     git.Repo.clone_from(remote_url, path)
+
+
+def repo_file_is_valid(path):
+    with open(path) as inputfile:
+        giturl_list = [line.split(None, 1)[0] for line in inputfile]
+        for giturl in giturl_list:
+            validated_entry = validators.url(giturl)
+            if validated_entry != True:
+               print("This URL: " + giturl + " is invalid")
+               ## TODO: Logging
+    inputfile.close()
