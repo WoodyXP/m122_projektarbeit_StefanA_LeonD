@@ -1,3 +1,5 @@
+import shutil
+
 import git
 import os
 
@@ -16,10 +18,15 @@ def repo_matches_remote(repo, remote_url):
 
 
 def delete_repo(path):
-    os.remove(path)
+    git.rmtree(path)
 
 
 def clone_repo(path, remote_url):
     print("cloning repo: " + remote_url + "to path: " + path)
     os.mkdir(path)
-    git.Repo.clone_from(remote_url, path)
+    try:
+        git.Repo.clone_from(remote_url, path)
+    except git.exc.GitError:
+        # TODO logging
+        print("error while cloning")
+        return
