@@ -26,7 +26,4 @@ for repo in repos:
             delete_repo(repo_dir)
             clone_repo(repo_dir, remote_url)
     else:
-        if os.path.exists(repo_dir) and os.path.isdir(repo_dir):
-            shutil.rmtree(repo_dir)
-
         clone_repo(repo_dir, remote_url)
