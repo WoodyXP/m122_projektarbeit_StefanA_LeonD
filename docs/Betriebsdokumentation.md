@@ -73,3 +73,45 @@ TODO: beschreiben der erzeugt files (falls solche erzeugt werden)
 
 TODO: Lokation von logfiles und bekannte Fehlermeldungen beschreiben.
 
+#### Script 1: Git clone update repos
+Nur das erste Skript wird Input-Files benötigen, und diese sind ganz leicht zu erstellen.
+
+Unser Git clone update repos Skript kann mit CSV, aber auch mit anderen Datenformat wie z.B. TXT arbeiten.
+
+Wir benützten keine Headers sondern fangen gleich mit den Daten an.
+
+Das Inputfile sieht so aus:
+
+    <<GIT-URL>> <<Targetdirectory>>
+
+Das GIT-URL ist einfach der Link, dem man benützt um ein Git Repo zu clonen.
+
+Das Targetdirectory ist der Name des Ordners wo die Repo geclont werden soll.
+
+Ein funktionalbares Inputfile würde so aussehen:
+
+    https://github.com/iotkitv3/http IOTHTTP
+    https://github.com/WoodyXP/m122_projektarbeit_StefanA_LeonD M122_Vagrant
+    https://github.com/WoodyXP/Plantify Plantify
+    https://github.com/WoodyXP/Fast_Calculator UK_Modul
+
+Für das Teilen der GIT-Url und Targetdirectory benützten wir ein Whitespace.
+
+Wichtig für das Inputfile ist noch, das die URL stimmt und dass der Targetdirectory Name keine speziellen Zeichen
+beinhaltet. A-Z, 0-9 und -,_
+
+
+Das Script wird wie schon in der [Projektdokumenation] (docs/Projektdokumentation.md) aufgerufen.
+
+Für das normale starten ohne logs wird nur der Pfad zum Basedir und der Pfad zum Inputfile gebraucht.
+
+Ohne zusätztliche Logs
+
+        ./gitrepoupdater.py BASEDIR REPO_INPUT_FILE
+
+Mit zusätliche Logs
+
+        ./gitrepoupdaer.py -d BASEDIR REPO_INPUT_FILE
+
+Das einzige Outputfile vom erstem Skript werden die Logs sein.
+Diese werden im gleichen Order erstellt in dem sich das Skript befindet.
