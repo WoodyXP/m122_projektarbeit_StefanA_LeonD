@@ -23,7 +23,8 @@ def delete_repo(path):
 
 def clone_repo(path, remote_url):
     print("cloning repo: " + remote_url + "to path: " + path)
-    os.mkdir(path)
+    if not os.path.exists(path):
+        os.mkdir(path)
     try:
         git.Repo.clone_from(remote_url, path)
     except git.exc.GitError:
