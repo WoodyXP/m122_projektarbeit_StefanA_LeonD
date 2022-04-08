@@ -19,9 +19,14 @@ for repo in repos:
         repo = git.Repo(repo_dir)
 
         if repo_matches_remote(repo, remote_url):
+            print("pulling repo")
             repo.remotes.origin.pull()
+            repo.close()
         else:
             delete_repo(repo_dir)
             clone_repo(repo_dir, remote_url)
     else:
+        if os.path.exists(repo_dir) and os.path.isdir(repo_dir):
+            shutil.rmtree(repo_dir)
+
         clone_repo(repo_dir, remote_url)
