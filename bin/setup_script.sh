@@ -10,3 +10,5 @@ chmod 755 gitExtractCommits.py
 chmod 755 gitRepoUpdater.py
 chmod 755 gitRepoUpdaterFunctions.py
 chmod 755 gitExtractCommitsFunctions.py
+
+pip3 install -r requirements.txt
