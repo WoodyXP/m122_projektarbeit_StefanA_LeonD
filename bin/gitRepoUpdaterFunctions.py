@@ -1,5 +1,5 @@
 import shutil
-
+import validators
 import git
 import os
 
@@ -31,3 +31,14 @@ def clone_repo(path, remote_url):
         # TODO logging
         print("error while cloning")
         return
+
+
+def repo_file_is_valid(path):
+    with open(path) as inputfile:
+        giturl_list = [line.split(None, 1)[0] for line in inputfile]
+        for giturl in giturl_list:
+            validated_entry = validators.url(giturl)
+            if validated_entry != True:
+               print("This URL: " + giturl + " is invalid")
+               ## TODO: Logging
+    inputfile.close()
