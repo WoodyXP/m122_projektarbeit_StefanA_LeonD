@@ -115,3 +115,6 @@ Mit zusätliche Logs
 
 Das einzige Outputfile vom erstem Skript werden die Logs sein.
 Diese werden im gleichen Order erstellt in dem sich das Skript befindet.
+
+Das Logfile beinhaltet alle Infos der estellten Repos und welche Repos getpulled und gelöscht werden,
+falls im Inputfile etwas nicht stimmt, werden Errors ins File gelegt mit der Fehlermeldung.
