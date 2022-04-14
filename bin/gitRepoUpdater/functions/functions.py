@@ -1,9 +1,8 @@
 import logging
-import sys
 import validators
 import git
 import os
-from ..main import CommandLineArguments
+import re
 
 logger = logging.getLogger(__name__)
 
@@ -33,41 +32,21 @@ def clone_repo(path, remote_url):
     try:
         git.Repo.clone_from(remote_url, path)
     except git.exc.GitError:
-        # TODO logging
         logger.error("error while cloning repo: {0} to path {1}".format(remote_url, path))
         return
 
 
 def repo_file_is_valid(path):
-    with open(path) as inputfile:
-        giturl_list = [line.split(None, 1)[0] for line in inputfile]
-        for giturl in giturl_list:
-            validated_entry = validators.url(giturl)
-            if not validated_entry:
-                print("This URL: " + giturl + " is invalid")
-                ## TODO: Logging
-    inputfile.close()
-
-
-def get_valid_input_arguments():
-    if not len(sys.argv) < 2:
-        repo_file_path = sys.argv[1]
-        base_dir = sys.argv[2]
-
-        if repo_file_is_valid(repo_file_path) and os.path.isdir(base_dir):
-            if len(sys.argv) == 3:
-                verbose = sys.argv[3]
-                if verbose == '-v':
-                    return CommandLineArguments(repo_file_path, base_dir, True)
-                else:
-                    logger.error("argument {0} doesn't match expected -v".format(verbose))
-            else:
-                return CommandLineArguments(repo_file_path, base_dir, False)
-        else:
-            logger.error("repo file path: {0} or base path: {1} is invalid".format(repo_file_path, base_dir))
-
-    logger.error("invalid arguments")
-    sys.exit()
+    with open(path) as f:
+        for line in f:
+            if not validators.url(line.split()[0]):
+                logger.error("repo url: {0} is invalid".format(line.split()[0]))
+                return False
+            if not re.match("^[A-Za-z0-9-]*$", line.split()[1]):
+                logger.error("target directory: {0} is invalid, should only contain numbers and letters".format(line.split()[1]))
+                return False
+    f.close()
+    return True
 
 
 def run(repo_file_path, base_dir):
