@@ -13,7 +13,7 @@ def init_logger(verbose: bool):
     root_logger = logging.getLogger()
     root_logger.setLevel(logging.INFO)
 
-    file_handler = logging.FileHandler(datetime.today().strftime('%Y_%m_%d_%H-%M-%S') + ".log")
+    file_handler = logging.FileHandler("./log/" + datetime.today().strftime('%Y_%m_%d_%H-%M-%S') + "_gitRepoUpdater.log")
     file_handler.setFormatter(log_formatter)
     file_handler.setLevel(logging.INFO)
     root_logger.addHandler(file_handler)
