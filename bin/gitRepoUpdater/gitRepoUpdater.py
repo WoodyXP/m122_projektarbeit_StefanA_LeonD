@@ -50,6 +50,9 @@ def main():
     base_dir = args.base
     verbose = args.v
 
+    if not os.path.isdir("./log"):
+        os.mkdir("./log")
+
     init_logger(verbose)
 
     if not repo_file_is_valid(repo_file_path):

@@ -39,12 +39,21 @@ def clone_repo(path, remote_url):
 def repo_file_is_valid(path):
     with open(path) as f:
         for line in f:
-            if not validators.url(line.split()[0]):
-                logger.error("repo url: {0} is invalid".format(line.split()[0]))
-                return False
-            if not re.match("^[A-Za-z0-9-]*$", line.split()[1]):
-                logger.error(
-                    "target directory: {0} is invalid, should only contain numbers and letters".format(line.split()[1]))
+            try:
+                repo_url = line.split()[0]
+                repo_dir = line.split()[1]
+
+                if not validators.url(repo_url):
+                    logger.error("repo url: {0} is invalid".format(repo_url))
+                    return False
+
+                if not re.match("^[A-Za-z0-9-]*$", repo_dir):
+                    logger.error(
+                        "target directory: {0} is invalid, should only contain numbers and letters".format(repo_dir))
+                    return False
+
+            except IndexError:
+                logger.error("repo url or repo directory is missing for line: {0}".format(line))
                 return False
     f.close()
     return True
@@ -58,7 +67,8 @@ def clean_up_repo_dir(repo_dir_names, base_dir):
 
     non_matches = list(set(all_repos).difference(repo_dir_names))
 
-    logger.info("repositories that are no longer in the repo text file and will be deleted: {0}".format(" ".join(non_matches)))
+    logger.info(
+        "repositories that are no longer in the repo text file and will be deleted: {0}".format(" ".join(non_matches)))
 
     for non_match in non_matches:
         delete_repo(os.path.join(base_dir, non_match))
