@@ -25,12 +25,12 @@ def delete_repo(path):
 
 
 def clone_repo(path, remote_url):
-    logger.info("cloning repo: {0} to path: {1}".format(remote_url, path))
     if not os.path.exists(path):
         logger.info("creating path: {0} for repo: {1}".format(path, remote_url))
         os.mkdir(path)
     try:
         git.Repo.clone_from(remote_url, path)
+        logger.info("cloning repo: {0} to path: {1}".format(remote_url, path))
     except git.exc.GitError:
         logger.error("error while cloning repo: {0} to path {1}".format(remote_url, path))
         return
@@ -39,17 +39,43 @@ def clone_repo(path, remote_url):
 def repo_file_is_valid(path):
     with open(path) as f:
         for line in f:
-            if not validators.url(line.split()[0]):
-                logger.error("repo url: {0} is invalid".format(line.split()[0]))
-                return False
-            if not re.match("^[A-Za-z0-9-]*$", line.split()[1]):
-                logger.error("target directory: {0} is invalid, should only contain numbers and letters".format(line.split()[1]))
+            try:
+                repo_url = line.split()[0]
+                repo_dir = line.split()[1]
+
+                if not validators.url(repo_url):
+                    logger.error("repo url: {0} is invalid".format(repo_url))
+                    return False
+
+                if not re.match("^[A-Za-z0-9-]*$", repo_dir):
+                    logger.error(
+                        "target directory: {0} is invalid, should only contain numbers and letters".format(repo_dir))
+                    return False
+
+            except IndexError:
+                logger.error("repo url or repo directory is missing for line: {0}".format(line))
                 return False
     f.close()
     return True
 
 
+def clean_up_repo_dir(repo_dir_names, base_dir):
+    all_repos = []
+    for sub_dir in os.listdir(base_dir):
+        if os.path.isdir(os.path.join(base_dir, sub_dir)) and dir_is_repo(os.path.join(base_dir, sub_dir)):
+            all_repos.append(sub_dir)
+
+    non_matches = list(set(all_repos).difference(repo_dir_names))
+
+    logger.info(
+        "repositories that are no longer in the repo text file and will be deleted: {0}".format(" ".join(non_matches)))
+
+    for non_match in non_matches:
+        delete_repo(os.path.join(base_dir, non_match))
+
+
 def run(repo_file_path, base_dir):
+    repo_dir_names = []
     with open(repo_file_path) as f:
         repos = f.readlines()
 
@@ -70,3 +96,6 @@ def run(repo_file_path, base_dir):
                 clone_repo(repo_dir, remote_url)
         else:
             clone_repo(repo_dir, remote_url)
+        repo_dir_names.append(target_dir)
+
+    clean_up_repo_dir(repo_dir_names, base_dir)
