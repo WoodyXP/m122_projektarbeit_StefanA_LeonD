@@ -97,15 +97,15 @@ def get_target_dir(target_path):
     except FileNotFoundError:
         print("Directory: {0} does not exist".format(target_path))
         logger.error("Directory: {0} does not exist".format(target_path))
-        return 0
+        quit()
     except NotADirectoryError:
         print("{0} is not a directory".format(target_path))
         logger.error("{0} is not a directory".format(target_path))
-        return 0
+        quit()
     except PermissionError:
         print("You do not have permissions to change to {0}".format(target_path))
         logger.error("You do not have permissions to change to {0}".format(target_path))
-        return 0
+        quit()
 
 
 def get_subdirs(targetdir_path, output_filename):
@@ -158,7 +158,7 @@ def get_commit_logs(subfolder, writer):
                                                                                                            commit.author))
 
     except InvalidGitRepositoryError:
-        print("This directory does not contain git: {0}".format(repo_name))
+        print("This directory does not contain git")
         logger.info("Folder does not contain git: {0}".format(subfolder))
 
 

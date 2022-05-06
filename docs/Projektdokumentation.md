@@ -30,27 +30,35 @@ Für das erste Skript muss man 2 Parameter angeben.
 
 Ohne zusätztliche Logs
 
-        ./gitrepoupdater.py BASEDIR REPO_INPUT_FILE
+        python ./gitrepoupdater.py BASEDIR REPO_INPUT_FILE
 
 Mit zusätliche Logs
 
-        ./gitrepoupdaer.py -d BASEDIR REPO_INPUT_FILE
+        python ./gitrepoupdaer.py -d BASEDIR REPO_INPUT_FILE
 
 Das Flag "-d" dient dazu dem Skript zu sagen, dass er alle Logs ausgeben soll.
 
 #### Script 2: Git exract commits
 Auch für das zweite Skript muss man nur 2 Parameter mitgeben.
-1. BASEDIR, das Directory wo die Repos sich befinden.
-2. COMMITOUTPUTFILE, der Name des Outputfiles
+1. BASEDIR, das Directory wo die Repos sich befinden. -t
+2. COMMITOUTPUTFILE, der Name des Outputfiles. -n
 
 Ohne zusätztliche Logs
 
-        ./gitextractcommits.py BASEDIR COMMITOUTPUTFILE
+        ./gitextractcommits.py -t BASEDIR -n COMMITOUTPUTFILE
 
 Mit zusätliche Logs
 
-        ./gitextractcommits.py -d BASEDIR COMMITOUTPUTFILE
-Wie beim Skript 1 macht das Flag "-d" logs auszugeben
+        ./gitextractcommits.py -t BASEDIR -n COMMITOUTPUTFILE -verbose
+Wie beim Skript 1 macht das Flag "-verbose" logs auszugeben
+
+Für den Basedir/Targetdir Pfad muss man den Flag -t verwenden, ohne dem wird das Script nicht funktionieren.
+
+Für den COMMITOUTPUTFILE wird der Flag -n verwendet.
+
+Falls der Nutzter ein speziellen Speicherort für die Logs will, kann der den Flag -f verwenden.
+
+        python ./gitextractcommits.py -t BASEDIR -n COMMITOUTPUTFILE -l LOGSLOCATIONPATH
 
 
 ### Ablauf der Automation

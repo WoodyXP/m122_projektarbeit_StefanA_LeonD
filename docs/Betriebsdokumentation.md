@@ -107,14 +107,98 @@ Für das normale starten ohne logs wird nur der Pfad zum Basedir und der Pfad zu
 
 Ohne zusätztliche Logs
 
-        ./gitrepoupdater.py BASEDIR REPO_INPUT_FILE
+        python ./gitrepoupdater.py BASEDIR REPO_INPUT_FILE
 
 Mit zusätliche Logs
 
-        ./gitrepoupdaer.py -d BASEDIR REPO_INPUT_FILE
+        python ./gitrepoupdaer.py -d BASEDIR REPO_INPUT_FILE
 
 Das einzige Outputfile vom erstem Skript werden die Logs sein.
 Diese werden im gleichen Order erstellt in dem sich das Skript befindet.
 
 Das Logfile beinhaltet alle Infos der estellten Repos und welche Repos getpulled und gelöscht werden,
 falls im Inputfile etwas nicht stimmt, werden Errors ins File gelegt mit der Fehlermeldung.
+
+#### Script 2: Git Extract Commits
+
+Das Script braucht keine externen Inputfiles und keine Conifg und Inputfiles, jedoch braucht es den Absoluten Pfad vom 
+Homedirectory bis zum Base/Targetdir.
+
+Wie auch schon Oben bescrhieben braucht das Script nur den Pfad um zu funktionieren, es kann aber mit zusätzlichen Flags
+aufgerufen werden um Kleinigkeiten zu ändern/konfigurieren.
+
+##### Ausführung
+
+1. Script mit nur Base/Targetdir aufrufen
+
+   Flags: -t
+
+        python ./gitExtractCommit.py -t BASEDIR
+
+   Output:
+
+   - Default_Commit_Log Outputfile mit Git Commits wird im gleichen Ordner generiert
+   - YYYYMMDDHH-MM-SS_gitComitExtract.log wird im normal Falls unter dem Ordner ../log/ generiert werden.
+   
+
+2. Script mit dem Base/Targetdir und neuen Outputfile Namen
+
+   Flags: -t -n
+
+        python ./gitExtractCommit.py -t BASEDIR -n OUTPUTFILENAME
+
+   Output:
+
+   - OUTPUTFILENAME Outputfile mit Git Commits wird im gleichen Ordner generiert
+   - YYYYMMDDHH-MM-SS_gitComitExtract.log wird im normal Falls unter dem Ordner ../log/ generiert werden.
+   
+
+3. Script mit dem Base/Targetdir und neuen Outputfile Namen mit zusätzlichen Logs
+
+   Flags: -t -n -verbose
+
+        python ./gitExtractCommit.py -t BASEDIR -n OUTPUTFILENAME -verbose
+
+   Output:
+
+   - OUTPUTFILENAME Outputfile mit Git Commits wird im gleichen Ordner generiert
+   - YYYYMMDDHH-MM-SS_gitComitExtract.log wird im normal Falls unter dem Ordner ../log/ generiert werden.
+   - Es werden zusätzlich Logs in der Console ausgegeben.
+
+
+4. Script mit dem Base/Targetdir, neuen Outputfile Namen und ausgewählter Logsfile Speicherlokation
+
+   Flags: -t -n -l
+
+        python ./gitExtractCommit.py -t BASEDIR -n OUTPUTFILENAME -l LOGSAVELOCATION
+
+   Output:
+
+   - OUTPUTFILENAME Outputfile mit Git Commits wird im gleichen Ordner generiert
+   - YYYYMMDDHH-MM-SS_gitComitExtract.log wird im Pfad gespeichert die angegeben worde, falls Ordner nicht exestieren, werden diese erstellt.
+   
+
+Beim erzeugten CommitLogs File werden 4 Sachen Header benützt.
+
+Diese sind:
+
+   - ***Targetdir***: Lokalen Pfad und Namen des Lokalem Repos
+   - ***Date***: Datum des Commits, Formet= YYYYMMDD
+   - ***Commit Hash***: Commit Hash des Commits
+   - ***Author***: Author des erstellten Commits
+
+
+##### Fehler   
+   
+Das Script wird Fehler ausgeben falls der Input nicht richtig gemacht wird.
+
+Bekannte Fehler sind:
+
+1. Flag -t wird nicht benützt
+- gitExtractCommits: error: the following arguments are required: -t/--Targetdir
+
+2. Ein unbekanntes Argument wird verwendet
+- gitExtractCommits: error: unrecognized arguments: -p
+
+Alle anderen Fehler werden vom Script selber gehandled und geben Meldungen im Logfile aus.
+
