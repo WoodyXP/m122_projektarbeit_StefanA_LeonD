@@ -86,7 +86,7 @@ Das Inputfile sieht so aus:
 
 Das GIT-URL ist einfach der Link, dem man benützt um ein Git Repo zu clonen.
 
-Das Targetdirectory ist der Name des Ordners wo die Repo geclont werden soll **ACHTUNG: es kann kein Pfad angegeben werden**.
+Das Targetdirectory ist der Name des Ordners wo die Repo geclont werden soll **ACHTUNG: es kann kein Pfad angegeben werden und der Ordner, falls nicht vorhanden, wird relativ zum Skriptpfad erstellt**.
 
 Ein funktionalbares Inputfile würde so aussehen:
 
@@ -105,13 +105,13 @@ Das Script wird wie schon in der [Projektdokumenation] (docs/Projektdokumentatio
 
 Für das normale starten ohne logs wird nur der Pfad zum Basedir und der Pfad zum Inputfile gebraucht.
 
-Ohne zusätztliche Logs
+Ohne zusätztliche Logs in der Konsole
 
-        python3 ./gitrepoupdater.py BASEDIR REPO_INPUT_FILE
+        python3 ./gitrepoupdater.py --base BASEDIR --repos REPO_INPUT_FILE
 
-Mit zusätliche Logs
+Mit zusätliche Logs in der Konsole
 
-        python3 ./gitrepoupdaer.py -d BASEDIR REPO_INPUT_FILE
+        python3 ./gitrepoupdaer.py --v --base BASEDIR --repos REPO_INPUT_FILE
 
 Das einzige Outputfile vom erstem Skript werden die Logs sein.
 Diese werden im gleichen Order erstellt in dem sich das Skript befindet.
