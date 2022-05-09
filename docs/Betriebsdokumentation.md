@@ -86,7 +86,7 @@ Das Inputfile sieht so aus:
 
 Das GIT-URL ist einfach der Link, dem man benützt um ein Git Repo zu clonen.
 
-Das Targetdirectory ist der Name des Ordners wo die Repo geclont werden soll.
+Das Targetdirectory ist der Name des Ordners wo die Repo geclont werden soll **ACHTUNG: es kann kein Pfad angegeben werden**.
 
 Ein funktionalbares Inputfile würde so aussehen:
 
