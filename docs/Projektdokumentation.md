@@ -28,15 +28,15 @@ Für das erste Skript muss man 2 Parameter angeben.
 1. BASEDIR, das Directory wo die Repos geclont werden sollen.
 2. REPO_INPUT_FILE, das Inputfile mit den GIT Urls und dem Zieldirectory/Namen vom Folder wo das Repo geclont wird.
 
-Ohne zusätztliche Logs
+Ohne zusätztliche Logs in der Konsole
 
-        python3 ./gitrepoupdater.py BASEDIR REPO_INPUT_FILE
+        python3 ./gitrepoupdater.py --base BASEDIR --repos REPO_INPUT_FILE
 
-Mit zusätliche Logs
+Mit zusätliche Logs in der Konsole
 
-        python3 ./gitrepoupdaer.py -d BASEDIR REPO_INPUT_FILE
+        python3 ./gitrepoupdaer.py --v BASEDIR REPO_INPUT_FILE
 
-Das Flag "-d" dient dazu dem Skript zu sagen, dass er alle Logs ausgeben soll.
+Das Flag "--v" dient dazu dem Skript zu sagen, dass er alle Logs ausgeben soll.
 
 #### Script 2: Git exract commits
 Auch für das zweite Skript muss man nur 2 Parameter mitgeben.
