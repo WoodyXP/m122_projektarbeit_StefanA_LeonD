@@ -92,7 +92,9 @@ TODO: Nachdem das Programm verwirklicht wurde hier die unterschiede von der Impl
 
 #### Script 1: Git clone update repos
 
-Die Aufgabenstellung des Skriptes 1 ist sehr simple und alle Kriterien sollte leicht zum implementieren sein.
+Es hat sich im Grossen und Ganzen nicht viel verändert.
+Es wurden einfach noch checks hinzugefügt, um zu überprüfen ob die remote-url eines bereits geklontem Repository auch mit dem des Repository.txt übereinstimmt. Falls dies nicht der Fall ist, wird das Repository gelöscht und nochmals geklont.
+Züsätzlich wird das Repository.txt file auch auf Fehler überprüft z.B. bei den URLs oder beim Namen des Target-Ordners.
 
 #### Script 2: Git exract commits
 
