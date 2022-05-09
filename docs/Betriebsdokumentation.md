@@ -101,7 +101,7 @@ Wichtig für das Inputfile ist noch, das die URL stimmt und dass der Targetdirec
 beinhaltet. A-Z, 0-9 und -,_
 
 
-Das Script wird wie schon in der [Projektdokumenation] (docs/Projektdokumentation.md) aufgerufen.
+Das Script wird wie schon in der [Projektdokumenation](docs/Projektdokumentation.md) aufgerufen.
 
 Für das normale starten ohne logs wird nur der Pfad zum Basedir und der Pfad zum Inputfile gebraucht.
 
