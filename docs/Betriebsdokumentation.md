@@ -47,7 +47,7 @@ und
 In der Commandline eingeben.
 
 Falls "-bash: pip3: command not found" oder "-bash: python3: command not found" angezeigt wird, bedeutet
-es, dass die Packages nicht oder nicht richtig installiert geworden sind. 
+es, dass die Packages nicht oder nicht richtig installiert worden sind. 
 
 Bei diesem Fall können Sie Leon Domiter oder Stefan Arsic kontaktieren.
 
@@ -107,11 +107,11 @@ Für das normale starten ohne logs wird nur der Pfad zum Basedir und der Pfad zu
 
 Ohne zusätztliche Logs
 
-        python ./gitrepoupdater.py BASEDIR REPO_INPUT_FILE
+        python3 ./gitrepoupdater.py BASEDIR REPO_INPUT_FILE
 
 Mit zusätliche Logs
 
-        python ./gitrepoupdaer.py -d BASEDIR REPO_INPUT_FILE
+        python3 ./gitrepoupdaer.py -d BASEDIR REPO_INPUT_FILE
 
 Das einzige Outputfile vom erstem Skript werden die Logs sein.
 Diese werden im gleichen Order erstellt in dem sich das Skript befindet.
@@ -133,7 +133,7 @@ aufgerufen werden um Kleinigkeiten zu ändern/konfigurieren.
 
    Flags: -t
 
-        python ./gitExtractCommit.py -t BASEDIR
+        python3 ./gitExtractCommit.py -t BASEDIR
 
    Output:
 
@@ -145,7 +145,7 @@ aufgerufen werden um Kleinigkeiten zu ändern/konfigurieren.
 
    Flags: -t -n
 
-        python ./gitExtractCommit.py -t BASEDIR -n OUTPUTFILENAME
+        python3 ./gitExtractCommit.py -t BASEDIR -n OUTPUTFILENAME
 
    Output:
 
@@ -157,7 +157,7 @@ aufgerufen werden um Kleinigkeiten zu ändern/konfigurieren.
 
    Flags: -t -n -verbose
 
-        python ./gitExtractCommit.py -t BASEDIR -n OUTPUTFILENAME -verbose
+        python3 ./gitExtractCommit.py -t BASEDIR -n OUTPUTFILENAME -verbose
 
    Output:
 
@@ -170,7 +170,7 @@ aufgerufen werden um Kleinigkeiten zu ändern/konfigurieren.
 
    Flags: -t -n -l
 
-        python ./gitExtractCommit.py -t BASEDIR -n OUTPUTFILENAME -l LOGSAVELOCATION
+        python3 ./gitExtractCommit.py -t BASEDIR -n OUTPUTFILENAME -l LOGSAVELOCATION
 
    Output:
 

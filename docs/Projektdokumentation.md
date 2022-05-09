@@ -30,11 +30,11 @@ Für das erste Skript muss man 2 Parameter angeben.
 
 Ohne zusätztliche Logs
 
-        python ./gitrepoupdater.py BASEDIR REPO_INPUT_FILE
+        python3 ./gitrepoupdater.py BASEDIR REPO_INPUT_FILE
 
 Mit zusätliche Logs
 
-        python ./gitrepoupdaer.py -d BASEDIR REPO_INPUT_FILE
+        python3 ./gitrepoupdaer.py -d BASEDIR REPO_INPUT_FILE
 
 Das Flag "-d" dient dazu dem Skript zu sagen, dass er alle Logs ausgeben soll.
 
@@ -58,7 +58,7 @@ Für den COMMITOUTPUTFILE wird der Flag -n verwendet.
 
 Falls der Nutzter ein speziellen Speicherort für die Logs will, kann der den Flag -f verwenden.
 
-        python ./gitextractcommits.py -t BASEDIR -n COMMITOUTPUTFILE -l LOGSLOCATIONPATH
+        python3 ./gitextractcommits.py -t BASEDIR -n COMMITOUTPUTFILE -l LOGSLOCATIONPATH
 
 
 ### Ablauf der Automation
@@ -97,3 +97,4 @@ Die Aufgabenstellung des Skriptes 1 ist sehr simple und alle Kriterien sollte le
 #### Script 2: Git exract commits
 
 Alles was in der Aufgavenstellung des Skriptes 2 steht, kann auch ohne grössere Probleme implementiert werden.
+Das einzige was das Script nicht machen kann, ist die Commits aus anderen Branches ausser main holen.
